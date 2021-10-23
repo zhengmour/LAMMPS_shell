@@ -18,7 +18,7 @@ echo "#/bin/bash" > $TMPFILE
 chmod 755 $TMPFILE
 
 # delete bond angle dihedral
-awk '{if (NR<=3 || NR==9 || (NR>=13 && NR<=19))
+awk '{if (NR<=3 || NR==9 || (NR>=14 && NR<=19))
 		{print $0}}' $DATAFILE  > $NEWDATAFILE
 line_pair=$(grep -n "Pair Coeffs" $DATAFILE | awk -F: '{print $1}')
 line_atoms=$(grep -n "Atoms" $DATAFILE | awk -F: '{print $1}')
@@ -104,21 +104,10 @@ awk -v mass="$(($line_masses+1))" -v atom="$(($line_atoms-1))" -v str="$str" 'BE
 		print $1" "num[$2]" "$3"  "$4" "$5" "$6
 	}}' $NEWDATAFILE > $NEWDATAFILE2
 
+mv ./$NEWDATAFILE2 ./$NEWDATAFILE
 echo "----------------finally----------------------"
 unset line_atoms
 unset line_masses
 unset str
 unset num
-
-
-
-
-
-
-
-
-
-
-
-
 
