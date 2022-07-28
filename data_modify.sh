@@ -36,8 +36,10 @@ awk 'BEGIN{for(i=1;i<'$(($line_pair-20))';i++){num[i]=i;}}
 	}}
 	END{{for (x in num) print "change_num["x"]=" num[x] '\n'}
 	{len=length(name)-1;
-	str="   "len" atom types";
-	print "sed -i '\''4c "str"'\'' '$NEWDATAFILE'" '\n'}}' $DATAFILE >> $TMPFILE
+	str1="sed -i '\''4c \\ \\ \\ "len" atom types '\'' ";
+	str2="sed -i '\''4a \\  '\'' ";
+	print str1 "'$NEWDATAFILE'" '\n';
+	print str2 "'$NEWDATAFILE'" '\n'}}' $DATAFILE >> $TMPFILE
 
 echo "------------create a mapping table-------------"
 # delete 2,8,9,10 of atoms
