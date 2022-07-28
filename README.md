@@ -7,3 +7,6 @@ data_modify.sh filename.data
 
 Then you will get two files: filename.data, nfilename.data.   
 The atom_style in the filename.data is full, and in the nfilename.data is charge.  
+
+# lastly, you can move nfilename.data file to cover filename.data file
+mv nfilename.data filename.data
